@@ -13,15 +13,17 @@ describe('filterAsync', () => {
 
     // try to remove the .DS_Store in macOS
     const index = paths.indexOf('.DS_Store');
-    paths.splice(index, 1);
+    if (index >= 0) {
+      paths.splice(index, 1);
+    }
 
-    assert.deepEqual(paths.sort(), ['dir1', 'dir2', 'a.js', 'b.js'].sort());
+    assert.deepEqual(paths.sort(), ['dir1', 'dir2', 'a.txt', 'b.txt'].sort());
 
     const files = await filterAsync(paths, async (path) => {
       const stat: fs.Stats = await statAsync(nodepath.join('./test/data', path));
       return stat.isFile();
     });
-    assert.deepEqual(files.sort(), ['a.js', 'b.js'].sort());
+    assert.deepEqual(files.sort(), ['a.txt', 'b.txt'].sort());
   });
 
   it('Case 2', async () => {
