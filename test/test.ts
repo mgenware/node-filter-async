@@ -34,4 +34,14 @@ describe('filterAsync', () => {
 
     assert.deepEqual(results, [2, 4]);
   });
+  it('Indicies', async () => {
+    const nums = [1, 2, 3, 4];
+    const indicies: { [key: number ]: boolean} = {};
+    await filterAsync(nums, (n, i) => {
+      indicies[i] = true;
+      return Promise.resolve(n % 2 === 0);
+    });
+
+    assert.deepEqual(Object.keys(indicies).sort(), [0, 1, 2, 3]);
+  });
 });
