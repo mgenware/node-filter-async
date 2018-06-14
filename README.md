@@ -28,16 +28,20 @@ JavaScript:
 ```javascript
 const { filterAsync } = require('node-filter-async');
 
-const results = filterAsync(someArray, async (value) => {
-  return await asyncFunc(value) === 'blablabla';
-});
+(async () => {
+  const results = filterAsync(someArray, async (value) => {
+    return await asyncFunc(value) === 'blablabla';
+  });
+})();
 ```
 
 TypeScript:
 ```typescript
 import { filterAsync } from 'node-filter-async';
 
-const results = filterAsync(someArray, async (value) => {
-  return await asyncFunc(value) === 'blablabla';
-});
+(async () => {
+  const results = filterAsync(someArray, async (value) => {
+    return await asyncFunc(value) === 'blablabla';
+  });
+})();
 ```
