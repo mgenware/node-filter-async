@@ -40,6 +40,5 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "bluebird": "^3.5.1"
   }
 }
