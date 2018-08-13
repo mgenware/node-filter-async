@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as assert from 'assert';
 import { filterAsync } from '../lib/main';
 import * as nodepath from 'path';
-import { promisify } from 'bluebird';
+import { promisify } from 'util';
 
 const statAsync = promisify(fs.stat);
 const readdirAsync = promisify(fs.readdir);
