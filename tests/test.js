@@ -1,15 +1,16 @@
-import * as fs from 'fs';
-import * as assert from 'assert';
-import { filterAsync } from '../lib/main';
-import * as nodepath from 'path';
-import { promisify } from 'util';
+const fs = require('fs');
+const assert = require('assert');
+const { filterAsync } = require('..');
+const nodepath = require('path');
+const { promisify } = require('util');
 
 const statAsync = promisify(fs.stat);
 const readdirAsync = promisify(fs.readdir);
 
 describe('filterAsync', () => {
   it('Case 1', async () => {
-    const paths = await readdirAsync('./test/data');
+    const dataDir = nodepath.join(__dirname, 'data');
+    const paths = await readdirAsync(dataDir);
 
     // try to remove the .DS_Store in macOS
     const index = paths.indexOf('.DS_Store');
@@ -20,7 +21,7 @@ describe('filterAsync', () => {
     assert.deepEqual(paths.sort(), ['dir1', 'dir2', 'a.txt', 'b.txt'].sort());
 
     const files = await filterAsync(paths, async (path) => {
-      const stat: fs.Stats = await statAsync(nodepath.join('./test/data', path));
+      const stat = await statAsync(nodepath.join(dataDir, path));
       return stat.isFile();
     });
     assert.deepEqual(files.sort(), ['a.txt', 'b.txt'].sort());
@@ -34,14 +35,15 @@ describe('filterAsync', () => {
 
     assert.deepEqual(results, [2, 4]);
   });
-  it('Indicies', async () => {
+
+  it('Indices', async () => {
     const nums = [1, 2, 3, 4];
-    const indicies: { [key: number ]: boolean} = {};
+    const indices = {};
     await filterAsync(nums, (n, i) => {
-      indicies[i] = true;
+      indices[i] = true;
       return Promise.resolve(n % 2 === 0);
     });
 
-    assert.deepEqual(Object.keys(indicies).sort(), [0, 1, 2, 3]);
+    assert.deepEqual(Object.keys(indices).sort(), [0, 1, 2, 3]);
   });
 });
