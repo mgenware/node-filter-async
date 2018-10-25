@@ -8,11 +8,12 @@ const statAsync = promisify(fs.stat);
 const readdirAsync = promisify(fs.readdir);
 
 (async () => {
-  const paths = await readdirAsync('./data');
+  const dataDir = nodepath.join(__dirname, 'data');
+  const paths = await readdirAsync(dataDir);
   console.log(`paths:\n${paths}`);
 
   const files = await filterAsync(paths, async (path) => {
-    const stat = await statAsync(nodepath.join('./data', path));
+    const stat = await statAsync(nodepath.join(dataDir, path));
     return stat.isFile();
   });
   console.log(`files:\n${files}`);
