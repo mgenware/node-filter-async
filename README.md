@@ -19,13 +19,17 @@ yarn add node-filter-async
 ### API
 
 ```javascript
-function filterAsync<T>(array: T[], callback: (value: T, index: number) => Promise<boolean>): Promise<T[]>;
+filterAsync<T>(
+  array: T[], // The array to be filtered
+  callback: (value: T, index: number) => Promise<boolean>, // The filter callback
+  progressCb?: (value: T, index: number) => void, // An optional callback which fires when filter callback is called on an element, can be used to report progress
+): Promise<T[]>;
 ```
 
 Example:
 
 ```js
-import { filterAsync } from 'node-filter-async';
+import filterAsync from 'node-filter-async';
 
 (async () => {
   const results = await filterAsync(someArray, async (value, index) => {
