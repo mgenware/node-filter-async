@@ -6,12 +6,22 @@ function checkArgument(value: unknown, name: string) {
 
 export async function filterAsync<T>(
   array: T[],
-  callback: (value: T, index: number) => Promise<boolean>): Promise<T[]> {
-    checkArgument(array, 'array');
-    checkArgument(callback, 'callback');
+  callback: (value: T, index: number) => Promise<boolean>,
+  progressCb?: (value: T, index: number) => void,
+): Promise<T[]> {
+  checkArgument(array, 'array');
+  checkArgument(callback, 'callback');
 
-    const results: boolean[] = await Promise.all(array.map(async (value, index) => {
-      return await callback(value, index);
-    }));
-    return array.filter((_, i) => results[i]);
+  const results: boolean[] = await Promise.all(
+    array.map(async (value, index) => {
+      const result = await callback(value, index);
+      if (progressCb) {
+        progressCb(value, index);
+      }
+      return result;
+    }),
+  );
+  return array.filter((_, i) => results[i]);
 }
+
+export default filterAsync;
