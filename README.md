@@ -20,9 +20,12 @@ yarn add node-filter-async
 
 ```javascript
 filterAsync<T>(
-  array: T[], // The array to be filtered
-  callback: (value: T, index: number) => Promise<boolean>, // The filter callback
-  progressCb?: (value: T, index: number) => void, // An optional callback which fires when filter callback is called on an element, can be used to report progress
+  // The array to be filtered
+  array: T[],
+  // The filter callback
+  callback: (value: T, index: number) => Promise<boolean>,
+  // An optional callback which fires each time an element gets checked, can be used to report progress
+  progressCb?: (value: T, index: number) => void,
 ): Promise<T[]>;
 ```
 
