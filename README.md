@@ -37,7 +37,7 @@ import filterAsync from 'node-filter-async';
 (async () => {
   const results = await filterAsync(someArray, async (value, index) => {
     console.log(`filtering [${index}]: ${value}`);
-    return await asyncFunc(value) === 'blablabla';
+    return (await asyncFunc(value)) === 'blablabla';
   });
 })();
 ```
