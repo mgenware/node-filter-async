@@ -1,7 +1,7 @@
 # node-filter-async
 
+[![Build Status](https://github.com/mgenware/node-filter-async/workflows/Build/badge.svg)](https://github.com/mgenware/node-filter-async/actions)
 [![MEAN Module](https://img.shields.io/badge/MEAN%20Module-TypeScript-blue.svg?style=flat-square)](https://github.com/mgenware/MEAN-Module)
-[![Build Status](https://img.shields.io/travis/mgenware/node-filter-async.svg?style=flat-square&label=Build+Status)](https://travis-ci.org/mgenware/node-filter-async)
 [![npm version](https://img.shields.io/npm/v/node-filter-async.svg?style=flat-square)](https://npmjs.com/package/node-filter-async)
 [![Node.js Version](http://img.shields.io/node/v/node-filter-async.svg?style=flat-square)](https://nodejs.org/en/)
 
