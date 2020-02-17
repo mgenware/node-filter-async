@@ -4,15 +4,11 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "baseUrl": "src",
-    "target": "es5",
-    "outDir": "dist",
+    "target": "ES6",
     "declaration": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "lib": ["es5", "es6"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+    "experimentalDecorators": true
+  }
 }

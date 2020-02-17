@@ -4,7 +4,7 @@ function checkArgument(value: unknown, name: string) {
   }
 }
 
-export async function filterAsync<T>(
+export default async function<T>(
   array: T[],
   callback: (value: T, index: number) => Promise<boolean>,
   progressCb?: (value: T, index: number) => void,
@@ -23,5 +23,3 @@ export async function filterAsync<T>(
   );
   return array.filter((_, i) => results[i]);
 }
-
-export default filterAsync;

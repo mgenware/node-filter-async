@@ -9,8 +9,7 @@
   "bugs": "https://github.com/mgenware/node-filter-async/issues",
   "keywords": [
     "array",
-    "filter",
-    "promise"
+    "filter"
   ],
   "repository": {
     "type": "git",
@@ -19,28 +18,33 @@
   "license": "MIT",
   "scripts": {
     "test": "yarn run clean && yarn run compile && yarn run lint && yarn run t",
-    "t": "mocha tests",
-    "build": "yarn test",
-    "compile": "tsc",
-    "dev": "yarn run clean && tsc -w",
+    "t": "mocha --require source-map-support/register dist_tests/**/*.test.js",
+    "build": "cross-env NODE_ENV=production yarn test",
+    "compile": "tsc -b tests",
+    "dev": "cross-env NODE_ENV=development yarn run clean && tsc -b tests -w",
     "prepublishOnly": "yarn run test",
-    "lint": "tslint --project .",
-    "clean": "del-cli dist"
+    "lint": "eslint --max-warnings 0 --ext .ts src/ tests/",
+    "clean": "del-cli dist && del-cli dist_tests"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "files": [
     "/dist/**/*.js",
     "/dist/**/*.ts",
+    "/dist/**/*.css",
     "/dist/**/*.map"
   ],
   "devDependencies": {
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.12.21",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^13.7.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "cross-env": "^7.0.0",
     "del-cli": "^3.0.0",
-    "mocha": "^6.2.2",
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.4"
+    "eslint": "^6.8.0",
+    "mocha": "^7.0.1",
+    "source-map-support": "^0.5.16",
+    "typescript": "^3.7.5"
   }
 }

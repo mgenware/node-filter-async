@@ -10,7 +10,6 @@ Filter array elements with Promises, zero dependencies, written in TypeScript.
 ### Installation
 
 ```bash
-npm install --save node-filter-async
 yarn add node-filter-async
 ```
 
@@ -20,12 +19,10 @@ yarn add node-filter-async
 
 ```javascript
 filterAsync<T>(
-  // The array to be filtered
+  // The array to be filtered.
   array: T[],
-  // The filter callback
+  // The async filter callback.
   callback: (value: T, index: number) => Promise<boolean>,
-  // An optional callback which fires each time an element gets checked, can be used to report progress
-  progressCb?: (value: T, index: number) => void,
 ): Promise<T[]>;
 ```
 
