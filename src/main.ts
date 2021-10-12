@@ -5,7 +5,7 @@ function checkArgument(value: unknown, name: string) {
 }
 
 export default async function<T>(
-  array: T[],
+  array: readonly T[],
   callback: (value: T, index: number) => Promise<boolean>,
   progressCb?: (value: T, index: number) => void,
 ): Promise<T[]> {
