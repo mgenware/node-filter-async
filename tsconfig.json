@@ -4,7 +4,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "target": "ES5",
+    "target": "ES2015",
     "declaration": true,
     "strict": true,
     "noUnusedLocals": true,
