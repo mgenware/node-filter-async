@@ -1,6 +1,6 @@
 {
   "name": "node-filter-async",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Filter array elements with Promises",
   "type": "module",
   "exports": "./dist/main.js",
