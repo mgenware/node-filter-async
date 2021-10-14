@@ -1,14 +1,3 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "target": "ES2015",
-    "declaration": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "experimentalDecorators": true
-  }
+  "extends": "mgenware-tsconfig-node"
 }

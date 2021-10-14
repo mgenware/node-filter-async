@@ -1,8 +1,8 @@
 import * as assert from 'assert';
-import filterAsync from '../';
+import filterAsync from '../dist/main.js';
 
 async function isEven(n: number): Promise<boolean> {
-  return n % 2 === 0;
+  return Promise.resolve(n % 2 === 0);
 }
 
 it('Basic', async () => {
