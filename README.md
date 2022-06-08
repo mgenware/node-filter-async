@@ -8,6 +8,8 @@ Filter array elements with Promises, zero dependencies, written in TypeScript.
 
 ### Installation
 
+> v3 is pure ESM. Use `node-filter-async@2` if you are targeting CommonJS.
+
 ```bash
 npm i node-filter-async
 ```
